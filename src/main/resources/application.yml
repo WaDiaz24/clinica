@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: clinica
+  datasource:
+    url: ${DB_URL}?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
