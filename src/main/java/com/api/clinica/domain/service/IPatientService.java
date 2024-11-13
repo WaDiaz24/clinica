@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface IPatientService {
     PatientDTO save(PatientDTO patient);
     Page<DataPatientDTO> findAll (Pageable pageable);
-    Optional<DataPatientDTO> findMedicoById(Long id);
+    Optional<DataPatientDTO> findPatientById(Long id);
     PatientDTO update(Long id, PatientDTO patient);
     Optional<Boolean> delete(Long id);
 }
