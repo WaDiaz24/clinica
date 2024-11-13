@@ -35,7 +35,7 @@ public class MedicoService implements IMedicoService {
 
     @Override
     public Optional<DataMedicoDTO> findMedicoById(Long id) {
-        return medicoRepository.findById(id).map(medicoMapper::convertMedicoEntityToDataMedicoDTO);
+        return medicoRepository.findByIdAndActiveTrue(id).map(medicoMapper::convertMedicoEntityToDataMedicoDTO);
     }
 
     @Override
