@@ -9,3 +9,7 @@ spring:
     hibernate:
       ddl-auto: update
     open-in-view: false
+
+api:
+  security:
+    secret: ${SECRET_KEY}
