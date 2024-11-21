@@ -1,5 +1,6 @@
 package com.api.clinica.infra.errors;
 
+import jakarta.validation.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -24,6 +25,11 @@ public class ErrorHandler {
     public ResponseEntity<Object> validation(MethodArgumentNotValidException e) {
         var errors = e.getFieldErrors().stream().map(DataErrorValidation::new);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errors);
+    }
+
+    @ExceptionHandler({IntegrityValidation.class, ValidationException.class})
+    public ResponseEntity<Object> validationErrors(Exception e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
     record DataErrorValidation(String field, String message) {

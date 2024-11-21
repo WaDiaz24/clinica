@@ -27,4 +27,10 @@ public interface IMedicoRepository extends JpaRepository<MedicoEntity, Long> {
            limit 1
            """)
     MedicoEntity selectMedicoWithSpecialtyOnDate(Specialty specialty, LocalDateTime date);
+
+    @Query("""
+            select m.active from MedicoEntity m
+            where m.id=:idMedico
+            """)
+    Boolean findActiveById(Long idMedico);
 }

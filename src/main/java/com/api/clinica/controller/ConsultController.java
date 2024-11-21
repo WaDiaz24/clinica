@@ -20,8 +20,6 @@ public class ConsultController {
 
     @PostMapping("/consult")
     public ResponseEntity<DataDetailsConsult> scheduleConsult(@RequestBody @Valid DataScheduleConsult dataScheduleConsult) {
-        System.out.println(dataScheduleConsult);
-        consultService.scheduleConsult(dataScheduleConsult);
-        return ResponseEntity.ok(new DataDetailsConsult(null, null, null, null));
+        return ResponseEntity.ok(consultService.scheduleConsult(dataScheduleConsult));
     }
 }

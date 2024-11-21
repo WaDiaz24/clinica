@@ -1,12 +1,20 @@
 package com.api.clinica.domain.dto;
 
-import java.time.LocalDate;
+import com.api.clinica.domain.data.entities.ConsultEntity;
+
+import java.time.LocalDateTime;
 
 public record DataDetailsConsult(
         Long id,
-        Long idPatient,
-        Long idMedico,
-        LocalDate consultDate
+        String namePatient,
+        String nameMedico,
+        LocalDateTime consultDate
 ) {
 
+    public DataDetailsConsult(ConsultEntity consult) {
+        this(consult.getId(),
+            consult.getPatient().getName(),
+            consult.getMedico().getName(),
+            consult.getConsultDate());
+    }
 }
