@@ -3,6 +3,7 @@ package com.api.clinica.controller;
 import com.api.clinica.domain.dto.DataMedicoDTO;
 import com.api.clinica.domain.dto.MedicoDTO;
 import com.api.clinica.domain.service.IMedicoService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RequiredArgsConstructor
 @RestController()
 @RequestMapping("/v1/api/clinica")
+@SecurityRequirement(name = "bearer-key")
 public class MedicoController {
 
     private final IMedicoService medicoService;
