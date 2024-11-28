@@ -5,6 +5,8 @@ import com.api.clinica.domain.data.entities.MedicoEntity;
 import com.api.clinica.domain.data.repositories.IConsultRepository;
 import com.api.clinica.domain.data.repositories.IMedicoRepository;
 import com.api.clinica.domain.data.repositories.IPatientRepository;
+import com.api.clinica.domain.dto.DataCancelConsult;
+import com.api.clinica.domain.dto.DetailsCancelConsult;
 import com.api.clinica.domain.dto.DataDetailsConsult;
 import com.api.clinica.domain.dto.DataScheduleConsult;
 import com.api.clinica.domain.validations.QueryValidator;
@@ -13,6 +15,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -43,10 +46,25 @@ public class ConsultService {
 
         var patient = patientRepository.findById(dataConsult.idPatient()).get();
 
-        var consult = new ConsultEntity(null, patient, medico, dataConsult.consultDate());
+        var consult = new ConsultEntity(null, patient, medico, dataConsult.consultDate(), null);
         consultRepository.save(consult);
 
         return new DataDetailsConsult(consult);
+    }
+
+    @Transactional
+    public DetailsCancelConsult cancelConsult(DataCancelConsult dataCancelConsult){
+        var consult = consultRepository.findById(dataCancelConsult.id())
+                        .orElseThrow(() -> new IntegrityValidation("Consultation not found"));
+
+        var now = LocalDateTime.now();
+        if(now.isAfter(consult.getConsultDate().minusHours(24))) {
+            throw new IntegrityValidation("Una cita solo se puede cancelar con al menos 24 horas de anticipación.");
+        }
+
+        consultRepository.deleteById(dataCancelConsult.id());
+
+        return new DetailsCancelConsult(consult.getPatient().getName(), consult.getMedico().getName(), dataCancelConsult.cancellationMotive().name());
     }
 
     private MedicoEntity selectMedico(DataScheduleConsult dataConsult) {
