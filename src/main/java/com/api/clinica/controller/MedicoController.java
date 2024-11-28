@@ -3,6 +3,7 @@ package com.api.clinica.controller;
 import com.api.clinica.domain.dto.DataMedicoDTO;
 import com.api.clinica.domain.dto.MedicoDTO;
 import com.api.clinica.domain.service.IMedicoService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,9 @@ public class MedicoController {
 
     private final IMedicoService medicoService;
 
+    @Operation(
+            summary = "Guardar Medico"
+    )
     @PostMapping("/medico")
     public ResponseEntity<MedicoDTO> saveMedico(@RequestBody @Valid MedicoDTO medicoDTO, UriComponentsBuilder uriComponentsBuilder) {
         MedicoDTO savedMedico = medicoService.save(medicoDTO);
@@ -30,21 +34,33 @@ public class MedicoController {
         return ResponseEntity.created(url).body(savedMedico);
     }
 
+    @Operation(
+            summary = "Obtener todos los medicos activos"
+    )
     @GetMapping("/medicos")
     public ResponseEntity<Page<DataMedicoDTO>> getAllMedicos(@PageableDefault(size = 5) Pageable pageable) {
         return ResponseEntity.ok(medicoService.findAll(pageable));
     }
 
+    @Operation(
+            summary = "Obtener medico por Id"
+    )
     @GetMapping("/medico/{id}")
     public ResponseEntity<DataMedicoDTO> getMedicoById(@PathVariable Long id) {
         return ResponseEntity.of(medicoService.findMedicoById(id));
     }
 
+    @Operation(
+            summary = "Actualiza un medico"
+    )
     @PutMapping("/medico/{id}")
     public ResponseEntity<MedicoDTO> updateMedico(@PathVariable Long id, @RequestBody @Valid MedicoDTO medicoDTO) {
         return ResponseEntity.ok(medicoService.update(id, medicoDTO));
     }
 
+    @Operation(
+            summary = "Desactiva un medico"
+    )
     @DeleteMapping("/medico/{id}")
     public ResponseEntity<Boolean> deleteMedico(@PathVariable Long id) {
         return ResponseEntity.of(medicoService.delete(id));

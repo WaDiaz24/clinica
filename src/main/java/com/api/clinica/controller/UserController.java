@@ -2,6 +2,7 @@ package com.api.clinica.controller;
 
 import com.api.clinica.domain.dto.UserDTO;
 import com.api.clinica.domain.service.IUserService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,9 @@ public class UserController {
 
     public final IUserService userService;
 
+    @Operation(
+            summary = "Registrar un usuario"
+    )
     @PostMapping("/register")
     public ResponseEntity<UserDTO> saveUser(@RequestBody @Valid UserDTO user) {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));

@@ -1,10 +1,10 @@
-package com.api.clinica.domain.service;
+package com.api.clinica.domain.service.mappers;
 
 import com.api.clinica.domain.data.entities.UserEntity;
 import com.api.clinica.domain.dto.UserDTO;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class UserMapper {
 
     public UserEntity convertUserDtoToUserEntity(UserDTO user){

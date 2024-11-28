@@ -5,6 +5,7 @@ import com.api.clinica.domain.data.entities.PatientEntity;
 import com.api.clinica.domain.data.repositories.IPatientRepository;
 import com.api.clinica.domain.dto.DataPatientDTO;
 import com.api.clinica.domain.dto.PatientDTO;
+import com.api.clinica.domain.service.mappers.PatientMapper;
 import com.api.clinica.infra.errors.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -42,7 +43,7 @@ public class PatientService implements IPatientService{
 
     @Override
     public PatientDTO update(Long id, PatientDTO patient) {
-        PatientEntity patientE = patientRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Patient not found with id: "+id));
+        PatientEntity patientE = patientRepository.findByActiveTrueAndId(id).orElseThrow(() -> new ResourceNotFoundException("Patient not found with id: "+id));
         patientE.setName(patient.name());
         patientE.setEmail(patient.email());
         patientE.setDocument(patient.document());
@@ -65,6 +66,7 @@ public class PatientService implements IPatientService{
     @Override
     public Optional<Boolean> delete(Long id) {
         return patientRepository.findById(id)
+                .filter(PatientEntity::getActive)
                 .map(patient -> {
                     patient.setActive(false);
                     patientRepository.save(patient);
