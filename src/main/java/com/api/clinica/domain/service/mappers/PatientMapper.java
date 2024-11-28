@@ -1,14 +1,11 @@
-package com.api.clinica.domain.service;
+package com.api.clinica.domain.service.mappers;
 
 import com.api.clinica.domain.data.entities.PatientEntity;
 import com.api.clinica.domain.dto.DataPatientDTO;
 import com.api.clinica.domain.dto.PatientDTO;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-import java.time.Period;
-
-@Service
+@Component
 public class PatientMapper {
 
     public PatientEntity convertPatientDTOToPatientEntity(PatientDTO patientDTO) {
@@ -47,13 +44,5 @@ public class PatientMapper {
                 patientEntity.getPhone(),
                 patientEntity.getAge()
         );
-    }
-
-    public Integer calculateAge(LocalDate birthDate) {
-        if (birthDate == null) {
-            return 0;
-        }
-        LocalDate today = LocalDate.now();
-        return Period.between(today, birthDate).getYears();
     }
 }

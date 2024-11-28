@@ -4,6 +4,7 @@ import com.api.clinica.domain.data.entities.UserEntity;
 import com.api.clinica.domain.dto.AuthDTO;
 import com.api.clinica.infra.security.DataJwtToken;
 import com.api.clinica.infra.security.TokenService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,9 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final TokenService tokenService;
 
+    @Operation(
+            summary = "Login de usuario"
+    )
     @PostMapping("/login")
     public ResponseEntity<DataJwtToken> login(@RequestBody @Valid AuthDTO authDTO) {
         Authentication authToken = new UsernamePasswordAuthenticationToken(

@@ -5,6 +5,7 @@ import com.api.clinica.domain.data.entities.MedicoEntity;
 import com.api.clinica.domain.data.repositories.IMedicoRepository;
 import com.api.clinica.domain.dto.DataMedicoDTO;
 import com.api.clinica.domain.dto.MedicoDTO;
+import com.api.clinica.domain.service.mappers.MedicoMapper;
 import com.api.clinica.infra.errors.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -40,8 +41,11 @@ public class MedicoService implements IMedicoService {
 
     @Override
     public MedicoDTO update(Long id, MedicoDTO medico) {
-        MedicoEntity medicoE = medicoRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Medico not found with id: " + id));
+        MedicoEntity medicoE = medicoRepository.findByActiveTrueAndId(id);
+        if (medicoE == null) {
+            throw new ResourceNotFoundException("Medico not found with id: " + id);
+        }
+
         medicoE.setName(medico.name());
         medicoE.setEmail(medico.email());
         medicoE.setPhone(medico.phone());
@@ -64,6 +68,7 @@ public class MedicoService implements IMedicoService {
     @Override
     public Optional<Boolean> delete(Long id) {
         return medicoRepository.findById(id)
+                .filter(MedicoEntity::getActive)
                 .map(medico -> {
                     medico.setActive(false);
                     medicoRepository.save(medico);
