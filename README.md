@@ -12,6 +12,10 @@ El sistema permite gestionar citas de pacientes, así como realizar operaciones 
 <br/>
 <h2>Configuración</h2>
 <h3>1. Clonar el repositorio</h3>
+
+```env
+# git clone https://github.com/WaDiaz24/clinica.git
+```
 <h3>2. Configurar la Base de Datos</h3>
 <ul>
   <li>Crear una base de datos en MySQL llamada clinica_db o el nombre de tu preferencia</li>
