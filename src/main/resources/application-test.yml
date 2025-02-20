@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: clinica
+  datasource:
+    url: jdbc:mysql://localhost:3306/clinica_test?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: admin
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.MySQLDialect
