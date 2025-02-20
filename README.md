@@ -3,12 +3,12 @@ Esta es una API REST desarrollada con Java Spring Boot, MySQL como base de datos
 El sistema permite gestionar citas de pacientes, así como realizar operaciones CRUD para médicos y pacientes.
 
 <h2>Requisitos</h2>
-<ui>
+<ul>
   <li>Java JDK 17</li>
   <li>Gradle</li>
   <li>MySQL</li>
   <li>Postman o cualquier cliente REST para probar los endpoints.</li>
-</ui>
+</ul>
 <br/>
 <h2>Configuración</h2>
 <h3>1. Clonar el repositorio</h3>
