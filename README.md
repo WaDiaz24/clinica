@@ -20,9 +20,19 @@ El sistema permite gestionar citas de pacientes, así como realizar operaciones 
   DB_URL=jdbc:mysql://localhost:3306/clinica_db o el nombre de tu base de datos
 DB_USERNAME=tu_usuario
 DB_PASSWORD=tu_password
-  ```env
+```env
 # Configuración de la base de datos
 DB_URL=jdbc:mysql://localhost:3306/clinica_db
 DB_USERNAME=tu_usuario
 DB_PASSWORD=tu_contraseña
 </ul>
+
+
+### **1. Crear el Archivo `.env`**
+En la raíz del proyecto, crea un archivo llamado `.env` y agrega las siguientes variables de entorno con tus credenciales:
+
+```env
+# Configuración de la base de datos
+DB_URL=jdbc:mysql://localhost:3306/clinica_db
+DB_USERNAME=tu_usuario
+DB_PASSWORD=tu_contraseña
