@@ -18,7 +18,7 @@ El sistema permite gestionar citas de pacientes, así como realizar operaciones 
 </ul>
 
 
-### **1. Crear el Archivo `.env`**
+### **3. Crear el Archivo `.env`**
 En la raíz del proyecto, crea un archivo llamado `.env` y agrega las siguientes variables de entorno con tus credenciales:
 
 ```env
