@@ -13,3 +13,16 @@ El sistema permite gestionar citas de pacientes, así como realizar operaciones 
 <h2>Configuración</h2>
 <spam>Clonar el repositorio</spam>
 <spam>Configurar la Base de Datos</spam>
+<h3>Configurar la Base de Datos</h3>
+<ul>
+  <li>Crear una base de datos en MySQL llamada clinica_db o el nombre de tu preferencia</li>
+  <li>En la raíz del proyecto, crea un archivo llamado .env y agrega las siguientes variables de entorno con tus credenciales:</li>
+  DB_URL=jdbc:mysql://localhost:3306/clinica_db o el nombre de tu base de datos
+DB_USERNAME=tu_usuario
+DB_PASSWORD=tu_password
+  ```env
+# Configuración de la base de datos
+DB_URL=jdbc:mysql://localhost:3306/clinica_db
+DB_USERNAME=tu_usuario
+DB_PASSWORD=tu_contraseña
+</ul>
