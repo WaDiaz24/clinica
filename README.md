@@ -32,7 +32,7 @@ DB_USERNAME=tu_usuario
 DB_PASSWORD=tu_contraseña
 ```
 
-# Clave secreta para generar tokens JWT
+<h4>4. Clave secreta para generar tokens JWT</h4> 
 ```
 SECRET_KEY=tu_clave_secreta_segura
 ```
