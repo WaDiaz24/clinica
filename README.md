@@ -38,4 +38,8 @@ DB_PASSWORD=tu_contraseña
 # Esta llave debe ir igual en el archivo .env
 SECRET_KEY=tu_clave_secreta_segura
 ```
-
+<h3>⚠️ IMPORTANTE:</h3>
+<ul>
+  <li>Esta clave debe ser segura y única en cada entorno (desarrollo, pruebas, producción).</li>
+  <li>No compartas ni subas este archivo a Git. Está en .gitignore por seguridad.</li>
+</ul>
