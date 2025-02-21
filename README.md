@@ -32,7 +32,7 @@ DB_USERNAME=tu_usuario
 DB_PASSWORD=tu_contraseña
 ```
 
-<h3>4. Clave secreta para generar tokens JWT</h3>
+### 4. Clave secreta para generar tokens JWT
 
 ```
 # Esta llave debe ir igual en el archivo .env
