@@ -43,3 +43,21 @@ SECRET_KEY=tu_clave_secreta_segura
   <li>Esta clave debe ser segura y única en cada entorno (desarrollo, pruebas, producción).</li>
   <li>No compartas ni subas este archivo a Git. Está en .gitignore por seguridad.</li>
 </ul>
+<p>Si todo está configurado correctamente, la aplicación correrá en:</p>
+
+```
+http://localhost:8080
+```
+
+<h3>📖 Documentación de la API (Swagger - OpenAPI)</h3>
+<p>Este proyecto usa Springdoc OpenAPI para generar la documentación interactiva.</p>
+<p>📌 Accede a la documentación en Swagger UI:</p>
+
+```
+http://localhost:8080/swagger-ui/index.html
+```
+<p>📌 Ver el JSON de OpenAPI:</p>
+
+```
+http://localhost:8080/v3/api-docs
+```
