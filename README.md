@@ -30,3 +30,10 @@ En la raíz del proyecto, crea un archivo llamado `.env` y agrega las siguientes
 DB_URL=jdbc:mysql://localhost:3306/clinica_db
 DB_USERNAME=tu_usuario
 DB_PASSWORD=tu_contraseña
+```
+
+# Clave secreta para generar tokens JWT
+```
+SECRET_KEY=tu_clave_secreta_segura
+```
+
