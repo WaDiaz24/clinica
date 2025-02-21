@@ -61,3 +61,12 @@ http://localhost:8080/swagger-ui/index.html
 ```
 http://localhost:8080/v3/api-docs
 ```
+<h3>🛠 Tecnologías Utilizadas</h3>
+<ul>
+  <li>Spring Boot</li>
+  <li>Spring Security</li>
+  <li>JWT para autenticación - Auth-0</li>
+  <li>Spring Data JPA</li>
+  <li>MySQL</li>
+  <li>Springdoc OpenAPI (Swagger)</li>
+</ul>
